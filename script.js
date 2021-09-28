@@ -1,16 +1,29 @@
 let score = 0;
 let quizNow = 0;
 var secondsLeft = 60;
+var timerElement = document.getElementById("timer-element");
 var startButton = document.getElementById("start-btn");
 var nextButton = document.getElementById("next-btn");
-var timerInterval = 0;
-let quizAction = 0
-var choice2 = document.getElementById("choice2_content");
+var timerInterval
+let quizAction = 0;
+var choice1 = document.getElementById("choice1_content");
 var choice2 = document.getElementById("choice2_content");
 var choice3 = document.getElementById("choice3_content");
 var choice4 = document.getElementById("choice4_content");
 var selectionContent = document.getElementById("content");
 var quizAsk = document.getElementById("quiz-ask");
+
+startButton.addEventListener("click", function() {
+    timerInterval = setInterval(() => {
+        if (secondsLeft > 0) {
+            secondsLeft--;
+            timerElement.textContent = "System Failure in: " + secondsLeft + " seconds ";
+        }
+        else if (secondsLeft ===0) {
+            return score
+        }
+    }, 1000);
+})
 
 var questions = [
     {
@@ -46,4 +59,15 @@ var questions = [
         correct: "2",
     },
 ];
+
+// runTest()
+
+// function runTest()
+// var showQuizQuestions = questions[quizNow]
+
+// quizAsk.innerText = showQuizQuestions.question
+// choice1.innerText
+
+
+
 
