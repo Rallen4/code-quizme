@@ -57,12 +57,11 @@ var questionArray = [
 
 // declare function to run the quiz
 runTest()
-
 // create function to run the quiz
 function runTest() {
 
     // declare function to remove previous answer selection from previous questions, so that answers do not carry over question after question.
-    deselectAnswers()
+    hideAnswers()
     // define variable to be equal to the value/title of the current question within the predefined array of questions
     var quizNowData = questionArray[quizNow]
 
@@ -75,7 +74,7 @@ function runTest() {
 }
 
 // create the function to remove answers from previous questions 
-function deselectAnswers() {
+function hideAnswers() {
     userAnswers.forEach(userAnswer => userAnswer.checked = false)
 }
 
@@ -107,6 +106,14 @@ submitButton.addEventListener("click", () => {
             <h2>Your Intelligence Grants You ${score}/${questionArray.length} correct answers</h2>
 
             <button onclick="location.reload()">Try Again If You Wish</button>
+            <form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
             `
         }
     }
