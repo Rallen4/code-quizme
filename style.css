@@ -1,0 +1,11 @@
+body {
+    background-image: url(./rev.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-wrap: wrap;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    min-height: 100vh;
+    text-align: center;
+}
+
