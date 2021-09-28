@@ -26,7 +26,7 @@ var questionArray = [
         b: "Dome Shield",
         c: "Phase Invisible",
         d: "Speed Boost",
-        correct: "a",
+        correct: "choice1",
     },
     {
         question: "What is Lifeline's ULTIMATE ability?",
@@ -34,7 +34,7 @@ var questionArray = [
         b: "Dome Shield",
         c: "Care Package",
         d: "Health Drone",
-        correct: "c",
+        correct: "choice3",
     },
     {
         question: "What is Bloodhound's PASSIVE ability?",
@@ -42,7 +42,7 @@ var questionArray = [
         b: "Changing Shape",
         c: "Speed Boost",
         d: "Movement Tracking",
-        correct: "d",
+        correct: "choice4",
     },
     {
         question: "What is Revenant's ULTIMATE ability?",
@@ -50,7 +50,7 @@ var questionArray = [
         b: "Death Totem",
         c: "Boosted Climbing",
         d: "Phase Invisible",
-        correct: "b",
+        correct: "choice2",
     },
 ];
 
@@ -92,6 +92,7 @@ function inputChoice() {
 submitButton.addEventListener("click", () => {
     
     var pick = inputChoice()
+    console.log(pick,questionArray[quizNow].correct)
     if(pick) {
         if(pick === questionArray[quizNow].correct) {
             score++
@@ -105,7 +106,7 @@ submitButton.addEventListener("click", () => {
         } else {
             clearInterval();
             content.innerHTML = `
-            <h2>Your Intelligence Grants You ${score}/${questionArray.length}</h2>
+            <h2>Your Intelligence Grants You ${secondsLeft}</h2>
 
             <button onclick="location.reload()">Try Again If You Wish</button>
             <form>
