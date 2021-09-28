@@ -7,6 +7,10 @@ var choiceA = document.getElementById("choice1_content");
 var choiceB = document.getElementById("choice2_content");
 var choiceC = document.getElementById("choice3_content");
 var choiceD = document.getElementById("choice4_content");
+var choiceE = document.getElementById("choice5_content");
+var choiceF = document.getElementById("choice6_content");
+var choiceG = document.getElementById("choice7_content");
+var choiceH = document.getElementById("choice8_content");
 var selectionContent = document.getElementById("content");
 var userAnswers = document.querySelectorAll(".user-choice");
 var quizAsk = document.getElementById("quiz-ask");
@@ -68,7 +72,6 @@ function runTest() {
     choiceB.innerText = quizNowData.b
     choiceC.innerText = quizNowData.c
     choiceD.innerText = quizNowData.d
-    console.log("started")
 }
 
 // create the function to remove answers from previous questions 
@@ -89,13 +92,13 @@ function inputChoice() {
 
 // add eventListener for submit button to determine if user selected answer was correct or incorrect --> add if statement to define parameters for correct vs incorrect --> return +/- score value,
 submitButton.addEventListener("click", () => {
+    
     var pick = inputChoice()
     if(pick) {
         if(pick === questionArray[quizNow].correct) {
             score++
         }
         quizNow++
-
         // add if statement to continue running quiz if remaining questions exist. If not, deploy innerHTML message stating the score + "message", and insert new 'reload' button to allow user to take quiz again.
         if(quizNow < questionArray.length) {
             runTest()
@@ -118,7 +121,6 @@ submitButton.addEventListener("click", function() {
         }
         else if (secondsLeft ===0) {
             timerElement.textContent = "Ha Ha Ha... & You Thought You Could Beat Me? No Way. ";
-            return score
         }
     }, 1000);
 });
