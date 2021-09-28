@@ -1,7 +1,6 @@
 
 var secondsLeft = 30;
 var timerElement = document.getElementById("timer-element");
-var startButton = document.getElementById("start-btn");
 var submitButton = document.getElementById("submit");
 var choiceA = document.getElementById("choice1_content");
 var choiceB = document.getElementById("choice2_content");
@@ -16,8 +15,8 @@ var userAnswers = document.querySelectorAll(".user-choice");
 var quizAsk = document.getElementById("quiz-ask");
 
 // set default score and beginning quiz question to = 0
-let score = 0
-let quizNow = 0
+let score = 0;
+let quizNow = 0;
 
 // define quiz questions within an array and use strings to assign correct answer.
 var questionArray = [
@@ -96,19 +95,22 @@ submitButton.addEventListener("click", () => {
     if(pick) {
         if(pick === questionArray[quizNow].correct) {
             score++
+        } else if(pick !==questionArray[quizNow].correct) {
+            secondsLeft = secondsLeft - 5
         }
         quizNow++
         // add if statement to continue running quiz if remaining questions exist. If not, deploy innerHTML message stating the score + "message", and insert new 'reload' button to allow user to take quiz again.
         if(quizNow < questionArray.length) {
             runTest()
         } else {
+            clearInterval();
             content.innerHTML = `
-            <h2>Your Intelligence Grants You ${score}/${questionArray.length} correct answers</h2>
+            <h2>Your Intelligence Grants You ${score}/${questionArray.length}</h2>
 
             <button onclick="location.reload()">Try Again If You Wish</button>
             <form>
   <div class="form-group">
-    <label for="exampleInputEmail1">Name</label>
+    <label for="exampleInputEmail1">Email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted"></small>
   </div>
@@ -131,6 +133,7 @@ submitButton.addEventListener("click", function() {
         }
     }, 1000);
 });
+
 
 
 
