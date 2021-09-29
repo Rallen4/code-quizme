@@ -131,10 +131,12 @@ submitButton.addEventListener("click", () => {
 
 // add EventListener to submit button to initiate timer function. Deploy "message + secondsLeft" with timer countdown. If time runs out before quiz completion, deploy message to indicate user has lost.
 saveLocalBtn.addEventListener("click", function() {
-    var userData = JSON.parse(window.localStorage.getItem("Highscore")) || []
+    var userData = JSON.parse(window.localStorage.getItem("Highscore")) || [];
     var initials = document.getElementById("exampleInputEmail1").value
     userData.push({initials,highScore})
     window.localStorage.setItem("Highscore",JSON.stringify(userData))
+    window.location.href = "highscores.form-group";
+    console.log(window.location);
 });
 
 
