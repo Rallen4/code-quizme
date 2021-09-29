@@ -27,7 +27,7 @@ body {
     text-shadow:1.5px 1.5px rgb(114, 19, 19);
 }
 
-h3, h6 {
+h3, h6, .highscore-container {
     color: whitesmoke;
     text-shadow: 1px 1px rgb(114, 19, 19);
 }
@@ -54,12 +54,38 @@ h3, h6 {
     box-shadow: 0 0 10px 5px;
 }
 
+.highscore-container {
+    margin: 0;
+    background-image: url(./wraith.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family:'Courier New', Courier, monospace;
+    color: darkred;
+    text-shadow: 0.5px 0.5 rgb(114, 19, 19);
+    justify-content: space-between;
+    max-width: fit-content;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    text-shadow: 0.5px 0.5px white;
+    display: grid;
+    grid-template-columns: auto auto;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    margin: 50px;
+    max-width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px 5px;
+}
 button {
     cursor: pointer;
+    padding: 20px;
 }
 
 button:focus {
     background-color: rgb(78, 6, 6);
+    border-color: rgb(114, 19, 19);
 }
 
 button:hover {
@@ -72,4 +98,8 @@ ul {
 
 ul li label {
     cursor: pointer;
+}
+
+.form-group {
+    display: none;
 }

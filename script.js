@@ -134,14 +134,9 @@ saveLocalBtn.addEventListener("click", function() {
     var userData = JSON.parse(window.localStorage.getItem("Highscore")) || []
     var initials = document.getElementById("exampleInputEmail1").value
     userData.push({initials,highScore})
-
-    userData.sort( (high,low) => {
-        return low.score - high.score
-    })
-    userData.splice(5);
-
     window.localStorage.setItem("Highscore",JSON.stringify(userData))
 });
+
 
 
 
