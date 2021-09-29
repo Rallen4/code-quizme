@@ -1,5 +1,5 @@
 
-var secondsLeft = 30;
+var secondsLeft = 90;
 var timerElement = document.getElementById("timer-element");
 var submitButton = document.getElementById("submit");
 var choiceA = document.getElementById("choice1_content");
@@ -13,6 +13,10 @@ var choiceH = document.getElementById("choice8_content");
 var selectionContent = document.getElementById("content");
 var userAnswers = document.querySelectorAll(".user-choice");
 var quizAsk = document.getElementById("quiz-ask");
+var lsInfo = JSON.parse(window.localStorage.getItem("Highscore")) || []
+var saveLocalBtn = document.getElementById("highscore-btn");
+var highScoresList = document.getElementById("highScoresList");
+var highScore = 0
 
 // set default score and beginning quiz question to = 0
 let score = 0;
@@ -90,7 +94,16 @@ function inputChoice() {
 
 // add eventListener for submit button to determine if user selected answer was correct or incorrect --> add if statement to define parameters for correct vs incorrect --> return +/- score value,
 submitButton.addEventListener("click", () => {
-    
+    timerInterval = setInterval(() => {
+        if (secondsLeft > 0) {
+            
+            secondsLeft--;
+            timerElement.textContent = "System Failure in: " + secondsLeft + " seconds ";
+        }
+        else if (secondsLeft ===0) {
+            timerElement.textContent = "Revenant says: Ha Ha Ha... & You Thought You Could Beat Me? No Way. ";
+        }
+    }, 1000);
     var pick = inputChoice()
     console.log(pick,questionArray[quizNow].correct)
     if(pick) {
@@ -104,36 +117,35 @@ submitButton.addEventListener("click", () => {
         if(quizNow < questionArray.length) {
             runTest()
         } else {
+            highScore = secondsLeft;
             clearInterval();
             content.innerHTML = `
             <h2>Your Intelligence Grants You ${secondsLeft}</h2>
 
             <button onclick="location.reload()">Try Again If You Wish</button>
-            <form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted"></small>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
             `
+
         }
     }
 })
 
 // add EventListener to submit button to initiate timer function. Deploy "message + secondsLeft" with timer countdown. If time runs out before quiz completion, deploy message to indicate user has lost.
-submitButton.addEventListener("click", function() {
-    timerInterval = setInterval(() => {
-        if (secondsLeft > 0) {
-            secondsLeft--;
-            timerElement.textContent = "System Failure in: " + secondsLeft + " seconds ";
-        }
-        else if (secondsLeft ===0) {
-            timerElement.textContent = "Ha Ha Ha... & You Thought You Could Beat Me? No Way. ";
-        }
-    }, 1000);
+saveLocalBtn.addEventListener("click", function() {
+    var userData = JSON.parse(window.localStorage.getItem("Highscore")) || []
+    var initials = document.getElementById("exampleInputEmail1").value
+    userData.push({initials,highScore})
+
+    userData.sort( (high,low) => {
+        return low.score - high.score
+    })
+    userData.splice(5);
+
+    window.localStorage.setItem("Highscore",JSON.stringify(userData))
 });
+
+
+
+
 
 
 

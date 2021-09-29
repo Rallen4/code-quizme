@@ -9,7 +9,7 @@ body {
     text-align: center;
 }
 
-.web-body-full, header, h3 { 
+.web-body-full, header { 
     margin: 0;
     font-family:'Courier New', Courier, monospace;
     color: rgb(114, 19, 19);
@@ -20,6 +20,16 @@ body {
     align-items: center;
     text-shadow: 0.5px 0.5px whitesmoke;
     display: flex;
+}
+
+.web-head {
+    color: whitesmoke;
+    text-shadow:1.5px 1.5px rgb(114, 19, 19);
+}
+
+h3, h6 {
+    color: whitesmoke;
+    text-shadow: 1px 1px rgb(114, 19, 19);
 }
 
 .web-body-full {
