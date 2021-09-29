@@ -18,3 +18,4 @@ Local Storage and displaying the High Score page were the hardest ending points.
 
 ## Screenshots of Website Deployed 
 
+![Quiz Screenshot](./quizPic.png);
